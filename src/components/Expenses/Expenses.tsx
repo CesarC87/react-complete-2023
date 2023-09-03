@@ -3,6 +3,7 @@ import ExpenseItem from '../ExpenseItem/ExpenseItem'
 import {expenses} from '../../data/expenses'
 import './Expenses.css'
 import ExpenseDate from '../ExpenseDate/ExpenseDate'
+import Card from '../Card/Card'
 
 
 const Expenses = () => {
@@ -12,10 +13,10 @@ const Expenses = () => {
         {
       expenses.map( item => {
         return (
-          <div className='expense-item'>
+          <Card className='expense-item'>
             <ExpenseDate date={item.date}/>
             <ExpenseItem title={item.title} price={item.amount}/>
-          </div>
+          </Card>
         )
       })
     }
