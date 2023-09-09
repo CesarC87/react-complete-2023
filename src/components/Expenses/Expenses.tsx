@@ -4,12 +4,16 @@ import {expenses} from '../../data/expenses'
 import './Expenses.css'
 import ExpenseDate from '../ExpenseDate/ExpenseDate'
 import Card from '../Card/Card'
+import ExpensesFilter from '../ExpensesFilter/ExpensesFilter'
+import { useState } from 'react';
 
 
 const Expenses = () => {
-  console.log(expenses)
+  const [ year, setYear ] = useState(null)
+  console.log('asd ear', year)
   return (
     <div className='expenses'>
+      <ExpensesFilter setYear={setYear}/>
         {
       expenses.map( item => {
         return (

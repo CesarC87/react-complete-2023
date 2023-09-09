@@ -13,7 +13,6 @@ function App() {
 
   return (
     <>
-      <ExpensesFilter/>
       <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses/>
     </>
