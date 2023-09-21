@@ -3,8 +3,8 @@ import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
-const NewExpense = ({onAddExpense}) => {
-    const saveExpenseDataHandler = (enteredExpenseData) => {
+const NewExpense = ({onAddExpense}:any) => {
+    const saveExpenseDataHandler = (enteredExpenseData:any) => {
         const expenseData = {
           ...enteredExpenseData,
           id: Math.random().toString()

@@ -2,9 +2,9 @@ import React from 'react';
 
 import './ExpensesFilter.css';
 
-const ExpensesFilter = ({setYear}) => {
+const ExpensesFilter = ({setYear}:any) => {
 
-  const handleSelect = (e) => {
+  const handleSelect = (e:any) => {
     setYear(e.target.value)
   }
   return (
