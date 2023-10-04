@@ -3,20 +3,21 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 interface ExpenseFormProps {
-  onSaveExpenseData: (e?)=> void;
+  onSaveExpenseData: (e?:any)=> void;
 }
 
 const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
+  const [addExpense, setAddexpense] = useState(false);
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
   //   enteredAmount: '',
   //   enteredDate: '',
   // });
 
-  const titleChangeHandler = (event) => {
+  const titleChangeHandler = (event:any) => {
     setEnteredTitle(event.target.value);
     // setUserInput({
     //   ...userInput,
@@ -27,7 +28,7 @@ const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
     // });
   };
 
-  const amountChangeHandler = (event) => {
+  const amountChangeHandler = (event:any) => {
     setEnteredAmount(event.target.value);
     // setUserInput({
     //   ...userInput,
@@ -35,7 +36,7 @@ const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
     // });
   };
 
-  const dateChangeHandler = (event) => {
+  const dateChangeHandler = (event:any) => {
     setEnteredDate(event.target.value);
     // setUserInput({
     //   ...userInput,
@@ -43,7 +44,7 @@ const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
     // });
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = (event:any) => {
     event.preventDefault();
 
     const expenseData = {
@@ -56,10 +57,12 @@ const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
+    setAddexpense(false)
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <>
+    {addExpense ? <form onSubmit={submitHandler}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
@@ -72,7 +75,7 @@ const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
             min='0.01'
             step='0.01'
             onChange={amountChangeHandler}
-          />
+            />
         </div>
         <div className='new-expense__control'>
           <label>Date</label>
@@ -81,13 +84,17 @@ const ExpenseForm = ({onSaveExpenseData}:ExpenseFormProps) => {
             min='2019-01-01'
             max='2022-12-31'
             onChange={dateChangeHandler}
-          />
+            />
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button onClick={()=>setAddexpense(false)}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
-    </form>
+    </form> :
+    <button onClick={()=>setAddexpense(true)}>Add new expense</button>
+    }
+  </>
   );
 };
 
